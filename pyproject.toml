@@ -1,0 +1,14 @@
+[project]
+name = "agentic"
+version = "0.1.0"
+description = "Agentic"
+readme = "README.md"
+authors = [
+  { name = "Riccardo La Rosa", email = "r.larosa@gmail.com" }
+]
+requires-python = ">=3.12"
+dependencies = [
+    "langgraph>=0.3.21",
+    "langsmith>=0.3.19",
+    "langchain_anthropic>=0.3.10"
+]
