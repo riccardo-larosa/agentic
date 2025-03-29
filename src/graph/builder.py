@@ -1,7 +1,7 @@
 from langgraph.graph import StateGraph, START
 from langgraph.checkpoint.memory import MemorySaver
-from .types import State
-from .nodes import (
+from src.graph.types import State
+from src.graph.nodes import (
     # supervisor_node,
     # research_node,
     # code_node,
@@ -21,6 +21,7 @@ def build_graph():
     # build state graph
     builder = StateGraph(State)
     builder.add_edge(START, "coordinator")
+    builder.add_edge("coordinator", "__end__")
     builder.add_node("coordinator", coordinator_node)
     # builder.add_node("planner", planner_node)
     # builder.add_node("supervisor", supervisor_node)

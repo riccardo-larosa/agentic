@@ -8,6 +8,20 @@ wheels/
 
 # Virtual environments
 .venv
+myenv/
 
 # LangGraph API
 .langgraph_api
+
+# Environment variables
+.env
+.venv
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+
+# LangGraph API
+.langgraph_api
+

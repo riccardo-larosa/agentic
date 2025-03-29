@@ -6,9 +6,27 @@ readme = "README.md"
 authors = [
   { name = "Riccardo La Rosa", email = "r.larosa@gmail.com" }
 ]
-requires-python = ">=3.12"
+requires-python = ">=3.13"
 dependencies = [
     "langgraph>=0.3.21",
     "langsmith>=0.3.19",
-    "langchain_anthropic>=0.3.10"
+    "langchain_anthropic>=0.3.10",
+    "langchain-community>=0.3.19",
+    "langchain-experimental>=0.3.4",
+    "langgraph-api>=0.0.38",
+    "langgraph-cli[inmem]>=0.1.81",
+    "langchain-core>=0.3.49",
+]
+test = [
+    "pytest>=7.4.0",
+    "pytest-cov>=4.1.0",
+]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+python_files = ["test_*.py"]
+addopts = "-v --cov=src --cov-report=term-missing"
+filterwarnings = [
+    "ignore::DeprecationWarning",
+    "ignore::UserWarning",
 ]
