@@ -3,7 +3,7 @@
   "dockerfile_lines": [],
   "dependencies": ["."],
   "graphs": {
-    "agent": "./src/graph/builder.py:build_graph"
+    "agent": "./src/workflow.py:graph"
   },
   "env": ".env"
 }

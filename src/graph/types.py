@@ -8,7 +8,7 @@ class State(MessagesState):
 
     # Constants
     TEAM_MEMBERS: list[str]
-    TEAM_MEMBER_CONFIGRATIONS: dict[str, dict]
+    TEAM_MEMBER_CONFIGURATIONS: dict[str, dict]
 
     # Runtime Variables
     next: str

@@ -10,7 +10,8 @@ from .types import State
 
 logger = logging.getLogger(__name__)
 
-def coordinator_node(state: State) -> Command[Literal[ "__end__"]]:
+
+def coordinator_node(state: State) -> Command[Literal["__end__"]]:
     """Coordinator node that communicate with customers."""
     logger.info("Coordinator talking.")
     # messages = apply_prompt_template("coordinator", state)

@@ -26,11 +26,6 @@ test = [
     { name = "pytest-cov" },
 ]
 
-[package.dev-dependencies]
-dev = [
-    { name = "pytest" },
-]
-
 [package.metadata]
 requires-dist = [
     { name = "black", marker = "extra == 'dev'", specifier = ">=24.2.0" },
@@ -42,13 +37,10 @@ requires-dist = [
     { name = "langgraph-api", specifier = ">=0.0.38" },
     { name = "langgraph-cli", extras = ["inmem"], specifier = ">=0.1.81" },
     { name = "langsmith", specifier = ">=0.3.19" },
-    { name = "pytest", marker = "extra == 'test'", specifier = ">=7.4.0" },
+    { name = "pytest", marker = "extra == 'test'", specifier = ">=8.3.5" },
     { name = "pytest-cov", marker = "extra == 'test'", specifier = ">=4.1.0" },
 ]
 provides-extras = ["dev", "test"]
-
-[package.metadata.requires-dev]
-dev = [{ name = "pytest", specifier = ">=8.3.5" }]
 
 [[package]]
 name = "aiohappyeyeballs"
