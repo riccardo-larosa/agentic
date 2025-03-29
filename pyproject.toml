@@ -1,3 +1,7 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
 [project]
 name = "agentic"
 version = "0.1.0"
@@ -17,6 +21,11 @@ dependencies = [
     "langgraph-cli[inmem]>=0.1.81",
     "langchain-core>=0.3.49",
 ]
+
+[project.optional-dependencies]
+dev = [
+    "black>=24.2.0",
+]
 test = [
     "pytest>=7.4.0",
     "pytest-cov>=4.1.0",
@@ -29,4 +38,22 @@ addopts = "-v --cov=src --cov-report=term-missing"
 filterwarnings = [
     "ignore::DeprecationWarning",
     "ignore::UserWarning",
+]
+
+[tool.hatch.build.targets.wheel]
+packages = ["src"]
+
+[tool.black]
+line-length = 88
+target-version = ["py312"]
+include = '\.pyi?$'
+extend-exclude = '''
+# A regex preceded with ^/ will apply only to files and directories
+# in the root of the project.
+^/build/
+'''
+
+[dependency-groups]
+dev = [
+    "pytest>=8.3.5",
 ]

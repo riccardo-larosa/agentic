@@ -60,6 +60,23 @@ The system uses a custom `State` class that extends `MessagesState` from LangGra
 - Deep thinking mode toggle
 - Search and planning controls
 
+## Development
+
+### Testing
+
+Run the test suite:
+
+```bash
+# Run all tests
+make test
+
+# Run specific test file
+pytest tests/integration/test_workflow.py
+
+# Run with coverage
+make coverage
+```
+
 ## License
 
 MIT
