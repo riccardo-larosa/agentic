@@ -16,5 +16,8 @@
   "breadcrumbs.showEvents": true,
   "workbench.colorCustomizations": {
     "titleBar.activeBackground": "#3b4977",
-  }
+  },
+  
+  // Spell checking
+  "cSpell.words": ["Agentic"]
 }

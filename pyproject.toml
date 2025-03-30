@@ -20,6 +20,8 @@ dependencies = [
     "langgraph-api>=0.0.38",
     "langgraph-cli[inmem]>=0.1.81",
     "langchain-core>=0.3.49",
+    "fastapi>=0.115.12",
+    "uvicorn>=0.34.0",
 ]
 
 [project.optional-dependencies]
