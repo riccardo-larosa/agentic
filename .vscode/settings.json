@@ -19,5 +19,13 @@
   },
   
   // Spell checking
-  "cSpell.words": ["Agentic"]
+  "cSpell.words": [
+    "Agentic",
+    "langgraph",
+    "levelname",
+    "pytest",
+    "Riccardo",
+    "TAVILY",
+    "venv"
+  ]
 }

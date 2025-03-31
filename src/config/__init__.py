@@ -29,7 +29,7 @@ TEAM_MEMBER_CONFIGURATIONS = {
         "desc": "Responsible for web browsing, content extraction and interaction",
         "desc_for_llm": (
             "Directly interacts with web pages, performing complex operations and interactions. "
-            "You can also leverage `browser` to perform in-domain search, like Facebook, Instgram, Github, etc."
+            "You can also leverage `browser` to perform in-domain search, like Facebook, Instagram, Github, etc."
         ),
         "is_optional": True,
     },
@@ -63,7 +63,7 @@ __all__ = [
     "VL_AZURE_DEPLOYMENT",
     # Other configurations
     "TEAM_MEMBERS",
-    "TEAM_MEMBER_CONFIGRATIONS",
+    "TEAM_MEMBER_CONFIGURATIONS",
     "TAVILY_MAX_RESULTS",
     "CHROME_INSTANCE_PATH",
     "CHROME_HEADLESS",

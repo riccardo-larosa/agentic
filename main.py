@@ -1,6 +1,7 @@
-def main():
-    print("Hello from agentic!")
+# TODO: remove this file
+# def main():
+#     print("Hello from agentic!")
 
 
-if __name__ == "__main__":
-    main()
+# if __name__ == "__main__":
+#     main()

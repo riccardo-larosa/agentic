@@ -43,10 +43,15 @@ uv pip install -e .
 
 ## Usage
 
-Run the application using the main entry point:
+Run the application using langgraph dev:
 
 ```bash
 uvx langgraph dev
+```
+
+Run the application using the main entry point:
+```bash
+make serve
 ```
 
 
