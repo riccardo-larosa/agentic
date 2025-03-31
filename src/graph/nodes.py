@@ -10,6 +10,15 @@ from .types import State
 
 logger = logging.getLogger(__name__)
 
+RESPONSE_FORMAT = "Response from {}:\n\n<response>\n{}\n</response>\n\n*Please execute the next step.*"
+
+@tool
+def handoff_to_planner():
+    """Handoff to planner agent to do plan."""
+    # This tool is not returning anything: we're just using it
+    # as a way for LLM to signal that it needs to hand off to planner agent
+    return
+
 
 def coordinator_node(state: State) -> Command[Literal["__end__"]]:
     """Coordinator node that communicate with customers."""
