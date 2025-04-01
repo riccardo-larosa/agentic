@@ -15,7 +15,7 @@
   "makefile.configureOnOpen": false,
   "breadcrumbs.showEvents": true,
   "workbench.colorCustomizations": {
-    "titleBar.activeBackground": "#3b4977",
+    "titleBar.activeBackground": "#44773b",
   },
   
   // Spell checking

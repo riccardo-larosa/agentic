@@ -1,14 +1,15 @@
 # from google.protobuf.any import is_type
 from langchain_openai import ChatOpenAI, AzureChatOpenAI
 from langchain_deepseek import ChatDeepSeek
-from src.llms.litellm_v2 import ChatLiteLLMV2 as ChatLiteLLM
-from src.config import load_yaml_config
+#from src.llms.litellm_v2 import ChatLiteLLMV2 as ChatLiteLLM
+from langchain_community.chat_models import ChatLiteLLM
+from src.config.loader import load_yaml_config
 from typing import Optional
 from litellm import LlmProviders
 from pathlib import Path
 from typing import Dict, Any
 
-from src.config import (
+from src.config.env import (
     REASONING_MODEL,
     REASONING_BASE_URL,
     REASONING_API_KEY,
@@ -18,12 +19,12 @@ from src.config import (
     VL_MODEL,
     VL_BASE_URL,
     VL_API_KEY,
-#    AZURE_API_BASE,
-#    AZURE_API_KEY,
-#    AZURE_API_VERSION,
-#    BASIC_AZURE_DEPLOYMENT,
-#    VL_AZURE_DEPLOYMENT,
-#    REASONING_AZURE_DEPLOYMENT,
+    #    AZURE_API_BASE,
+    #    AZURE_API_KEY,
+    #    AZURE_API_VERSION,
+    #    BASIC_AZURE_DEPLOYMENT,
+    #    VL_AZURE_DEPLOYMENT,
+    #    REASONING_AZURE_DEPLOYMENT,
 )
 from src.config.agents import LLMType
 
@@ -114,9 +115,7 @@ def create_litellm_model(
 
 
 # Cache for LLM instances
-_llm_cache: dict[LLMType, ChatOpenAI | ChatDeepSeek | ChatLiteLLM] = (
-    {}
-)
+_llm_cache: dict[LLMType, ChatOpenAI | ChatDeepSeek | ChatLiteLLM] = {}
 
 
 def is_litellm_model(model_name: str) -> bool:

@@ -10,6 +10,7 @@ env = Environment(
     lstrip_blocks=True,
 )
 
+
 def get_prompt_template(prompt_name: str) -> str:
     """
     Load and return a prompt template using Jinja2.
@@ -25,8 +26,7 @@ def get_prompt_template(prompt_name: str) -> str:
         return template.render()
     except Exception as e:
         raise ValueError(f"Error loading template {prompt_name}: {e}")
-      
-      
+
 
 def apply_prompt_template(prompt_name: str, state: AgentState) -> list:
     """
