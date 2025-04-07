@@ -13,7 +13,7 @@ As a Deep Researcher, you can breakdown the major subject into sub-topics and ex
 ## Agent Capabilities
 
 {% for agent in TEAM_MEMBERS %}
-- **`{{agent}}`**: {{ TEAM_MEMBER_CONFIGRATIONS[agent]["desc_for_llm"] }}
+- **`{{agent}}`**: {{ TEAM_MEMBER_CONFIGURATIONS[agent]["desc_for_llm"] }}
 {% endfor %}
 
 **Note**: Ensure that each step using `coder` and `browser` completes a full task, as session continuity cannot be preserved.
