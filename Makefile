@@ -17,3 +17,6 @@ test:
 
 coverage:
 	uv run pytest --cov=src tests/ --cov-report=term-missing
+
+langgraph:
+	uvx langgraph dev
