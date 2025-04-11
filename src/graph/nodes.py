@@ -90,21 +90,34 @@ def planner_node(state: State) -> Command[Literal["supervisor", "__end__"]]:
         goto=goto,
     )
 
-def supervisor_node(state: State) -> Command[Literal[*TEAM_MEMBERS, "__end__"]]:
+def supervisor_node(state: State) -> Command[Literal["researcher", "coder", "browser", "reporter", "__end__"]]:
     """Supervisor node that decides which agent should act next."""
     logger.info("Supervisor evaluating next action")
     messages = apply_prompt_template("supervisor", state)
     # preprocess messages to make supervisor execute better.
     messages = deepcopy(messages)
     for message in messages:
+        logger.warning(f"Message: {message}")
         if isinstance(message, BaseMessage) and message.name in TEAM_MEMBERS:
             message.content = RESPONSE_FORMAT.format(message.name, message.content)
-    response = (
-        get_llm_by_type(AGENT_LLM_MAP["supervisor"])
-        .with_structured_output(schema=Router, method="json_mode")
-        .invoke(messages)
-    )
-    goto = response["next"]
+    # response = (
+    #     get_llm_by_type(AGENT_LLM_MAP["supervisor"])
+    #     .with_structured_output(schema=Router, method="json_mode")
+    #     .invoke(messages)
+    # )
+    
+    # goto = response["next"]
+    # Remove structured output and use regular completion
+    response = get_llm_by_type(AGENT_LLM_MAP["supervisor"]).invoke(messages)
+    
+    # Parse the response to get the next agent
+    try:
+        response_dict = json.loads(response.content)
+        goto = response_dict.get("next", "FINISH")
+    except json.JSONDecodeError:
+        logger.warning("Invalid JSON response from supervisor")
+        goto = "FINISH"
+        
     logger.debug(f"Current state messages: {state['messages']}")
     logger.debug(f"Supervisor response: {response}")
 

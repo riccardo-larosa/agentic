@@ -12,6 +12,9 @@ lint:
 serve:
 	uv run server.py
 
+deploy:
+	langgraph deploy
+
 test:
 	uv run pytest tests/
 
