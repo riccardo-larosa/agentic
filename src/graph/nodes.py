@@ -38,7 +38,7 @@ def coordinator_node(state: State) -> Command[Literal["planner", "__end__"]]:
         .bind_tools([handoff_to_planner])
         .invoke(messages)
     )
-    logger.debug(f"Current state messages: {state['messages']}")
+    logger.info(f"Current state messages: {state['messages']}")
 
     goto = "__end__"
     if len(response.tool_calls) > 0:
@@ -72,8 +72,8 @@ def planner_node(state: State) -> Command[Literal["supervisor", "__end__"]]:
     full_response = ""
     for chunk in stream:
         full_response += chunk.content
-    logger.debug(f"Current state messages: {state['messages']}")
-    logger.debug(f"Planner response: {full_response}")
+    logger.info(f"Current state messages: {state['messages']}")
+    logger.info(f"Planner response: {full_response}")
 
     goto = "supervisor"
     try:
@@ -118,8 +118,8 @@ def supervisor_node(state: State) -> Command[Literal["researcher", "coder", "bro
         logger.warning("Invalid JSON response from supervisor")
         goto = "FINISH"
         
-    logger.debug(f"Current state messages: {state['messages']}")
-    logger.debug(f"Supervisor response: {response}")
+    logger.info(f"Current state messages: {state['messages']}")
+    logger.info(f"Supervisor response: {response}")
 
     if goto == "FINISH":
         goto = "__end__"
@@ -137,7 +137,7 @@ def research_node(state: State) -> Command[Literal["supervisor"]]:
     response_content = result["messages"][-1].content
     
     response_content = repair_json_output(response_content)
-    logger.debug(f"Research agent response: {response_content}")
+    logger.info(f"Research agent response: {response_content}")
     return Command(
         update={
             "messages": [
@@ -158,7 +158,7 @@ def code_node(state: State) -> Command[Literal["supervisor"]]:
     response_content = result["messages"][-1].content
     
     response_content = repair_json_output(response_content)
-    logger.debug(f"Code agent response: {response_content}")
+    logger.info(f"Code agent response: {response_content}")
     return Command(
         update={
             "messages": [
@@ -179,7 +179,7 @@ def browser_node(state: State) -> Command[Literal["supervisor"]]:
     logger.info("Browser agent completed task")
     response_content = result["messages"][-1].content
     response_content = repair_json_output(response_content)
-    logger.debug(f"Browser agent response: {response_content}")
+    logger.info(f"Browser agent response: {response_content}")
     return Command(
         update={
             "messages": [
@@ -197,11 +197,11 @@ def reporter_node(state: State) -> Command[Literal["supervisor"]]:
     logger.info("Reporter write final report")
     messages = apply_prompt_template("reporter", state)
     response = get_llm_by_type(AGENT_LLM_MAP["reporter"]).invoke(messages)
-    logger.debug(f"Current state messages: {state['messages']}")
+    logger.info(f"Current state messages: {state['messages']}")
     response_content = response.content
     
     response_content = repair_json_output(response_content)
-    logger.debug(f"reporter response: {response_content}")
+    logger.info(f"reporter response: {response_content}")
 
     return Command(
         update={

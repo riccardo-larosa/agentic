@@ -88,7 +88,7 @@ async def run_agent_workflow(
                 "TEAM_MEMBERS": team_members,
                 "TEAM_MEMBER_CONFIGURATIONS": TEAM_MEMBER_CONFIGURATIONS,
                 # Runtime Variables
-                # TODO: history should be stored in backend, frontend only needs to send the use inputs.
+                # TODO: history should be stored in backend, frontend only needs to send the user inputs.
                 "messages": [user_input_messages[-1]],
                 "deep_thinking_mode": deep_thinking_mode,
                 "search_before_planning": search_before_planning,
