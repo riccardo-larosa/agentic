@@ -170,12 +170,14 @@ def _create_llm_use_env(
                 model=VL_MODEL,
                 base_url=VL_BASE_URL,
                 api_key=VL_API_KEY,
+                function_call="auto"
             )
         else:
             llm = create_openai_llm(
                 model=VL_MODEL,
                 base_url=VL_BASE_URL,
                 api_key=VL_API_KEY,
+                function_call="auto"
             )
     else:
         raise ValueError(f"Unknown LLM type: {llm_type}")
@@ -193,6 +195,11 @@ def _create_llm_use_conf(llm_type: LLMType, conf: Dict[str, Any]) -> ChatLiteLLM
         raise ValueError(f"Unknown LLM type: {llm_type}")
     if not isinstance(llm_conf, dict):
         raise ValueError(f"Invalid LLM Conf: {llm_type}")
+    
+    # Add function_call for vision models
+    if llm_type == "vision":
+        llm_conf["function_call"] = "auto"
+    
     return ChatLiteLLM(**llm_conf)
 
 
