@@ -8,6 +8,7 @@ from typing import Optional
 from litellm import LlmProviders
 from pathlib import Path
 from typing import Dict, Any
+# import litellm
 
 from src.config.env import (
     REASONING_MODEL,
@@ -28,6 +29,8 @@ from src.config.env import (
 )
 from src.config.agents import LLMType
 
+# Add this near the top of the file, after imports
+# litellm._turn_on_debug()  # Enable litellm debug mode
 
 def create_openai_llm(
     model: str,
@@ -111,6 +114,8 @@ def create_litellm_model(
     if api_key:  # This will handle None or empty string
         llm_kwargs["api_key"] = api_key
 
+    # litellm.info(f"Creating LiteLLM model with config: {llm_kwargs}")
+ 
     return ChatLiteLLM(**llm_kwargs)
 
 
